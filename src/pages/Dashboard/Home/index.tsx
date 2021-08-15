@@ -1,13 +1,32 @@
 import React from "react";
-import CustomTextField from "../../../components/CustomTextField";
+import { useDispatch } from "react-redux";
+import { signOut } from "../../../redux/auth/authActions";
 import Header from "../../../components/Header";
 
 const Home: React.FC = () => {
+  const dispatch = useDispatch();
+
+  const handleSubmit = () => {
+    dispatch(signOut());
+  };
+
   return (
     <>
       <Header />
-      <CustomTextField placeholder="Placeholder" />
-      <div>dashboard</div>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          flexDirection: "column",
+          paddingTop: 50,
+        }}
+      >
+        <h1>Página DASHBOARD HOME a implementar</h1>
+
+        <button type="button" onClick={handleSubmit}>
+          Sing Out
+        </button>
+      </div>
     </>
   );
 };

@@ -1,6 +1,7 @@
 export const SIGN_IN_REQUEST = "SIGN_IN_REQUEST";
 export const SIGN_IN_SUCCESS = "SIGN_IN_SUCCESS";
 export const SIGN_IN_FAIL = "SIGN_IN_FAIL ";
+export const CLEAR_SIGN_IN_FAIL_MESSAGE = "CLEAR_SIGN_IN_FAIL_MESSAGE ";
 export const SIGN_OUT = "SIGN_OUT ";
 
 export interface User {
@@ -23,4 +24,5 @@ export interface AuthState {
   loading?: boolean;
   user?: User | undefined;
   autenticated: boolean;
+  errorMessage?: string;
 }

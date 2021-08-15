@@ -20,13 +20,19 @@ const validationSchema = yup.object({
     .required("A senha é obrigatória"),
 });
 
-const FormFold: React.FC<FormProps> = ({ onSubmit }) => {
+const FormFold: React.FC<FormProps> = ({
+  onSubmit,
+  errorMessage,
+  initialValues,
+}) => {
   const { colors } = useContext(ThemeContext);
   const formik = useFormik({
-    initialValues: {
-      email: "",
-      password: "",
-    },
+    initialValues: !!initialValues
+      ? initialValues
+      : {
+          email: "",
+          password: "",
+        },
     validationSchema: validationSchema,
     onSubmit: onSubmit,
   });
@@ -60,6 +66,9 @@ const FormFold: React.FC<FormProps> = ({ onSubmit }) => {
           (formik.touched.password && formik.errors.password) as string
         }
       />
+      <CustomTypography variant="body" color={colors.alert} weight="600">
+        {errorMessage}
+      </CustomTypography>
       <ButtonWrapper>
         <Button type="submit">
           <CustomTypography variant="buttonText" color={colors.textTertiary}>

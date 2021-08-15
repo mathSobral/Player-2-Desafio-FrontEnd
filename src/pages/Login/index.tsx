@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import FormFold, { FormValues } from "../../components/Login/FormFold";
 import Logo from "../../components/Login/Logo";
@@ -6,7 +6,7 @@ import DescriptionFold from "../../components/Login/DescriptionFold";
 import CustomTypography from "../../components/CustomTypography";
 import { ThemeContext } from "styled-components";
 import { RootState } from "../../redux/rootReducer";
-import { signIn } from "../../redux/auth/authActions";
+import { signIn, clearMessage } from "../../redux/auth/authActions";
 import {
   Container,
   Rectangle,
@@ -21,10 +21,21 @@ import { CircularProgress } from "@material-ui/core";
 
 const Login: React.FC = () => {
   const { colors } = useContext(ThemeContext);
-  const { loading } = useSelector((state: RootState) => state.auth);
+  const [formState, setFormState] = useState<FormValues>({
+    email: "",
+    password: "",
+  });
+  const { loading, errorMessage } = useSelector(
+    (state: RootState) => state.auth
+  );
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(clearMessage());
+  }, [dispatch]);
+
   const handleSignIn = ({ email, password }: FormValues) => {
+    setFormState({ email, password });
     dispatch(signIn({ email, password }));
   };
 
@@ -41,7 +52,11 @@ const Login: React.FC = () => {
                   <CircularProgress />
                 </ActivityIndicatorWrapper>
               ) : (
-                <FormFold onSubmit={handleSignIn} />
+                <FormFold
+                  onSubmit={handleSignIn}
+                  errorMessage={errorMessage}
+                  initialValues={formState}
+                />
               )}
             </FormWrapper>
             <CopyrightWrapper>

@@ -5,7 +5,11 @@ const Home: React.FC = () => {
   return (
     <>
       <Header />
-      <div>Home</div>
+      <div
+        style={{ display: "flex", justifyContent: "center", paddingTop: 50 }}
+      >
+        <h1>Página HOME a implementar</h1>
+      </div>
     </>
   );
 };

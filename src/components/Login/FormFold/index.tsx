@@ -10,14 +10,24 @@ export interface FormValues {
 }
 export interface FormProps {
   onSubmit(values: FormValues): void;
+  errorMessage?: string;
+  initialValues?: FormValues;
 }
 
-const FormFold: React.FC<FormProps> = ({ onSubmit }) => {
+const FormFold: React.FC<FormProps> = ({
+  onSubmit,
+  errorMessage,
+  initialValues,
+}) => {
   const { colors } = useContext(ThemeContext);
 
   return (
     <Container>
-      <Form onSubmit={onSubmit} />
+      <Form
+        onSubmit={onSubmit}
+        errorMessage={errorMessage}
+        initialValues={initialValues}
+      />
       <SignUpLinkWrapper>
         <CustomTypography color={colors.textQuaternary}>
           Não tem uma conta?

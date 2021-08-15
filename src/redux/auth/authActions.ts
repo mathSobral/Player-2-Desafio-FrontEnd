@@ -8,6 +8,7 @@ import {
   SignInData,
   User,
   AuthState,
+  CLEAR_SIGN_IN_FAIL_MESSAGE,
 } from "./authTypes";
 
 export const signInRequest = (): Action => {
@@ -18,8 +19,12 @@ export const signInSuccess = (user: User): Action => {
   return { type: SIGN_IN_SUCCESS, payload: user };
 };
 
-export const signInFail = (): Action => {
-  return { type: SIGN_IN_FAIL };
+export const signInFail = (errorMessage: string): Action => {
+  return { type: SIGN_IN_FAIL, payload: errorMessage };
+};
+
+export const clearMessage = (): Action => {
+  return { type: CLEAR_SIGN_IN_FAIL_MESSAGE };
 };
 
 export const signIn =
@@ -31,9 +36,13 @@ export const signIn =
     dispatch(signInRequest());
 
     setTimeout(() => {
-      const user: User = { email, name: "Teste" };
-      if (password === "12345678") dispatch(signInSuccess(user));
-      else dispatch(signInFail());
+      const user: User = {
+        email,
+        name: "Teste",
+        token: "Token recebido da api",
+      };
+      if (password !== "12345678") dispatch(signInSuccess(user));
+      else dispatch(signInFail("Senha ou usuário informados incorretamente"));
     }, 3000);
   };
 
