@@ -8,7 +8,7 @@ export interface ContainerProps {
 const transitionDuration = "225ms";
 
 export const Container = styled.div<ContainerProps>`
-  position: absolute;
+  position: fixed;
   height: 100%;
   top: 0px;
   background: ${(props) => props.theme.colors.backgroundGradient};

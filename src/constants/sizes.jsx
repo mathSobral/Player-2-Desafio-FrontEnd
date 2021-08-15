@@ -2,7 +2,14 @@
  * This file defines contants to be used on the code.
  */
 
-export const defaultContainer = { Width: 1120, paddingHorizontal: 16 };
+export const defaultContainer = {
+  Width: 1120,
+  paddingHorizontal: 16,
+};
+
+export const header = {
+  height: 80,
+};
 
 export const drawerWidth = { contracted: 50, expanded: 240 };
 

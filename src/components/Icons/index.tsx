@@ -8,3 +8,5 @@ export { default as Person } from "./Person";
 export { default as Speaker } from "./Speaker";
 export { default as ExpandLess } from "./ExpandLess";
 export { default as ExpandMore } from "./ExpandMore";
+export { default as Bell } from "./Bell";
+export { default as ArrowDown } from "./ArrowDown";

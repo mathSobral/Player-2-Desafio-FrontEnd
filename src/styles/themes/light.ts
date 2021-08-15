@@ -20,5 +20,6 @@ export const light: IDefaultTheme = {
     border: "#CED4DE",
     alert: "#FF403D",
     divider: "rgba(255, 255, 255, 0.35)",
+    pageTitleText: "#B3B9C9",
   },
 };

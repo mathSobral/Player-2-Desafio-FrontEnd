@@ -15,6 +15,7 @@ export interface IDefaultTheme {
     textTertiary: string;
     textQuaternary: string;
     copyrightText: string;
+    pageTitleText: string;
     border: string;
     alert: string;
     divider: string;

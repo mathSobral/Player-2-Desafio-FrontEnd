@@ -5,6 +5,7 @@ import RoutesPrivate from "./components/Routes/Private";
 import RoutesUnauthenticated from "./components/Routes/Unauthenticated";
 import { RootState } from "./redux/rootReducer";
 import Home from "./pages/Home";
+import BanksHome from "./pages/Dashboard/Banks/Home";
 import DashboardHome from "./pages/Dashboard/Home";
 import Login from "./pages/Login";
 
@@ -24,6 +25,12 @@ const Routes: React.FC = () => {
           exact
           path="/dashboard"
           component={DashboardHome}
+          isAuthenticated={autenticated}
+        />
+        <RoutesPrivate
+          exact
+          path="/bancos"
+          component={BanksHome}
           isAuthenticated={autenticated}
         />
       </Switch>
