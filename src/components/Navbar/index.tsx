@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
@@ -6,6 +7,7 @@ import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
+import { signOut } from "../../redux/auth/authActions";
 import LogoSvg from "../Icons/Logo";
 import HouseSvg from "../Icons/House";
 import SpeakerSvg from "../Icons/Speaker";
@@ -17,6 +19,7 @@ import { Container, LogoWrapper, StyledButton } from "./styles";
 
 export default function MiniDrawer() {
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -24,6 +27,10 @@ export default function MiniDrawer() {
 
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  const handleLogoutClick = () => {
+    dispatch(signOut());
   };
 
   return (
@@ -76,7 +83,7 @@ export default function MiniDrawer() {
               </ListItemIcon>
               <ListItemText primary="Contatos" />
             </ListItem>
-            <ListItem button>
+            <ListItem button onClick={handleLogoutClick}>
               <ListItemIcon>
                 <LogoutSvg />
               </ListItemIcon>

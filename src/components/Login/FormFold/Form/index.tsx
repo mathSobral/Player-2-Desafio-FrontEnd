@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
+import { useSelector } from "react-redux";
 import { Button } from "@material-ui/core";
+import { useFormik } from "formik";
+import * as yup from "yup";
+import { RootState } from "../../../../redux/rootReducer";
 import CustomTextField from "../../../CustomTextField";
 import CustomTypography from "../../../CustomTypography";
 import { ThemeContext } from "styled-components";
 import CalendarSvg from "../../../Icons/Calendar";
-import { useFormik } from "formik";
-import * as yup from "yup";
 import { ButtonWrapper, LabelWrapper, StyledForm } from "./styles";
 import { FormProps } from "../";
 
@@ -20,12 +22,9 @@ const validationSchema = yup.object({
     .required("A senha é obrigatória"),
 });
 
-const FormFold: React.FC<FormProps> = ({
-  onSubmit,
-  errorMessage,
-  initialValues,
-}) => {
+const FormFold: React.FC<FormProps> = ({ onSubmit, initialValues }) => {
   const { colors } = useContext(ThemeContext);
+  const { errorMessage } = useSelector((state: RootState) => state.auth);
   const formik = useFormik({
     initialValues: !!initialValues
       ? initialValues
@@ -36,6 +35,7 @@ const FormFold: React.FC<FormProps> = ({
     validationSchema: validationSchema,
     onSubmit: onSubmit,
   });
+
   return (
     <StyledForm onSubmit={formik.handleSubmit}>
       <LabelWrapper>

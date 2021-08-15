@@ -25,9 +25,7 @@ const Login: React.FC = () => {
     email: "",
     password: "",
   });
-  const { loading, errorMessage } = useSelector(
-    (state: RootState) => state.auth
-  );
+  const { loading } = useSelector((state: RootState) => state.auth);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -52,11 +50,7 @@ const Login: React.FC = () => {
                   <CircularProgress />
                 </ActivityIndicatorWrapper>
               ) : (
-                <FormFold
-                  onSubmit={handleSignIn}
-                  errorMessage={errorMessage}
-                  initialValues={formState}
-                />
+                <FormFold onSubmit={handleSignIn} initialValues={formState} />
               )}
             </FormWrapper>
             <CopyrightWrapper>
