@@ -23,6 +23,7 @@ export const FormSection = styled.div`
   flex-direction: column;
   justify-content: space-between;
   padding-bottom: 20px;
+  padding-top: 20px;
   padding-right: ${defaultContainer.paddingHorizontal}px;
   ${breakpoints.sm} {
     width: 100%;
@@ -31,11 +32,9 @@ export const FormSection = styled.div`
 `;
 
 export const FormWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
   max-width: 420px;
-  height: 100%;
-  justify-content: center;
+  margin: auto 0;
+  height: 550px;
   ${breakpoints.sm} {
     max-width: none;
   }
@@ -49,7 +48,8 @@ export const CopyrightWrapper = styled.div`
 
 export const ImageSection = styled.div`
   width: 50%;
-  display: flex;
+  height: 550px;
+  margin: auto 0;
   ${breakpoints.sm} {
     display: none;
   }
@@ -67,4 +67,11 @@ export const Rectangle = styled.div`
   ${breakpoints.sm} {
     display: none;
   }
+`;
+
+export const ActivityIndicatorWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

@@ -7,6 +7,7 @@ import CalendarSvg from "../../../Icons/Calendar";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { ButtonWrapper, LabelWrapper, StyledForm } from "./styles";
+import { FormProps } from "../";
 
 const validationSchema = yup.object({
   email: yup
@@ -18,14 +19,6 @@ const validationSchema = yup.object({
     .min(8, "A senha deve possuir no mínimo 8 caracteres de comprimento")
     .required("A senha é obrigatória"),
 });
-
-export interface FormValues {
-  email: string;
-  password: string;
-}
-export interface FormProps {
-  onSubmit(values: FormValues): void;
-}
 
 const FormFold: React.FC<FormProps> = ({ onSubmit }) => {
   const { colors } = useContext(ThemeContext);

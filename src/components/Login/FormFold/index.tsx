@@ -1,8 +1,16 @@
 import React, { useContext } from "react";
 import CustomTypography from "../../CustomTypography";
 import { ThemeContext } from "styled-components";
-import Form, { FormProps } from "./Form";
+import Form from "./Form";
 import { Container, SignUpLinkWrapper, CustomLink } from "./styles";
+
+export interface FormValues {
+  email: string;
+  password: string;
+}
+export interface FormProps {
+  onSubmit(values: FormValues): void;
+}
 
 const FormFold: React.FC<FormProps> = ({ onSubmit }) => {
   const { colors } = useContext(ThemeContext);

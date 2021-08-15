@@ -1,9 +1,12 @@
 import React, { useContext } from "react";
-import FormFold from "../../components/Login/FormFold";
+import { useSelector, useDispatch } from "react-redux";
+import FormFold, { FormValues } from "../../components/Login/FormFold";
 import Logo from "../../components/Login/Logo";
 import DescriptionFold from "../../components/Login/DescriptionFold";
 import CustomTypography from "../../components/CustomTypography";
 import { ThemeContext } from "styled-components";
+import { RootState } from "../../redux/rootReducer";
+import { signIn } from "../../redux/auth/authActions";
 import {
   Container,
   Rectangle,
@@ -12,10 +15,19 @@ import {
   ImageSection,
   FormWrapper,
   CopyrightWrapper,
+  ActivityIndicatorWrapper,
 } from "./styles";
+import { CircularProgress } from "@material-ui/core";
 
 const Login: React.FC = () => {
   const { colors } = useContext(ThemeContext);
+  const { loading } = useSelector((state: RootState) => state.auth);
+  const dispatch = useDispatch();
+
+  const handleSignIn = ({ email, password }: FormValues) => {
+    dispatch(signIn({ email, password }));
+  };
+
   return (
     <>
       <Rectangle />
@@ -24,9 +36,13 @@ const Login: React.FC = () => {
           <FormSection>
             <FormWrapper>
               <Logo />
-              <FormFold
-                onSubmit={(values) => console.log(JSON.stringify(values))}
-              />
+              {loading ? (
+                <ActivityIndicatorWrapper>
+                  <CircularProgress />
+                </ActivityIndicatorWrapper>
+              ) : (
+                <FormFold onSubmit={handleSignIn} />
+              )}
             </FormWrapper>
             <CopyrightWrapper>
               <CustomTypography color={colors.copyrightText}>
