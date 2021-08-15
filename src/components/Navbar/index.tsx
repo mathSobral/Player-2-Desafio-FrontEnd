@@ -17,12 +17,20 @@ import LogoutSvg from "../Icons/Logout";
 import CustomTypography from "../CustomTypography";
 import { Container, LogoWrapper, StyledButton } from "./styles";
 
-export default function MiniDrawer() {
+export type NavbarButton = "home" | "dispatch" | "groups" | "contacts" | "";
+
+export interface MiniDrawerProps {
+  activeButton?: NavbarButton;
+}
+
+const MiniDrawer: React.FC<MiniDrawerProps> = ({ activeButton }) => {
   const [open, setOpen] = useState(false);
+  const [button, setButton] = useState<NavbarButton>(activeButton || "");
   const dispatch = useDispatch();
 
   const handleDrawerOpen = () => {
     setOpen(true);
+    console.log("oi mundo");
   };
 
   const handleDrawerClose = () => {
@@ -36,48 +44,57 @@ export default function MiniDrawer() {
   return (
     <ClickAwayListener onClickAway={handleDrawerClose} mouseEvent="onMouseUp">
       <Container open={open}>
-        <LogoWrapper open={open}>
-          {!open && (
-            <StyledButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-            >
-              <LogoSvg />
-            </StyledButton>
-          )}
-        </LogoWrapper>
-
-        <Drawer variant="persistent" anchor="left" open={open}>
+        <Drawer variant="permanent" anchor="left" open={open}>
           <LogoWrapper open={open}>
-            {open && (
+            {!open ? (
+              <StyledButton onClick={handleDrawerOpen}>
+                <LogoSvg />
+              </StyledButton>
+            ) : (
               <StyledButton onClick={handleDrawerClose}>
                 <LogoSvg />
                 <CustomTypography>informem-se</CustomTypography>
               </StyledButton>
             )}
           </LogoWrapper>
+
           <Divider />
           <List>
-            <ListItem button>
+            <ListItem
+              button
+              className={button === "home" || !button ? "active" : ""}
+              onClick={() => setButton("home")}
+            >
               <ListItemIcon>
                 <HouseSvg />
               </ListItemIcon>
               <ListItemText primary="Início" />
             </ListItem>
-            <ListItem button>
+            <ListItem
+              button
+              className={button === "dispatch" ? "active" : ""}
+              onClick={() => setButton("dispatch")}
+            >
               <ListItemIcon>
                 <SpeakerSvg />
               </ListItemIcon>
               <ListItemText primary="Disparos" />
             </ListItem>
-            <ListItem button>
+            <ListItem
+              button
+              className={button === "groups" ? "active" : ""}
+              onClick={() => setButton("groups")}
+            >
               <ListItemIcon>
                 <PeopleSvg />
               </ListItemIcon>
               <ListItemText primary="Grupos" />
             </ListItem>
-            <ListItem button>
+            <ListItem
+              button
+              className={button === "contacts" ? "active" : ""}
+              onClick={() => setButton("contacts")}
+            >
               <ListItemIcon>
                 <PersonSvg />
               </ListItemIcon>
@@ -94,4 +111,5 @@ export default function MiniDrawer() {
       </Container>
     </ClickAwayListener>
   );
-}
+};
+export default MiniDrawer;

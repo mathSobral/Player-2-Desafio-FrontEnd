@@ -5,6 +5,8 @@ export interface ContainerProps {
   open?: boolean;
 }
 
+const transitionDuration = "225ms";
+
 export const Container = styled.div<ContainerProps>`
   position: absolute;
   height: 100%;
@@ -12,7 +14,7 @@ export const Container = styled.div<ContainerProps>`
   background: ${(props) => props.theme.colors.backgroundGradient};
   width: ${(props) =>
     props.open ? drawerWidth.expanded : drawerWidth.contracted}px;
-  transition: width 225ms;
+  transition: width ${transitionDuration};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -28,6 +30,8 @@ export const Container = styled.div<ContainerProps>`
     border: none;
   }
   & .MuiList-root {
+    width: ${(props) => (props.open ? "100%" : `${drawerWidth.contracted}px`)};
+    transition: width ${transitionDuration};
     height: 100%;
     & svg {
       transform-origin: center;
@@ -37,6 +41,10 @@ export const Container = styled.div<ContainerProps>`
       position: absolute;
       bottom: 60px;
       width: 100%;
+    }
+    & .active {
+      border-left: 3px solid white;
+      padding-left: 13px;
     }
   }
   & .MuiDivider-root {

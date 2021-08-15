@@ -4,7 +4,7 @@
 
 export const defaultContainer = { Width: 1120, paddingHorizontal: 16 };
 
-export const drawerWidth = { contracted: 44, expanded: 240 };
+export const drawerWidth = { contracted: 50, expanded: 240 };
 
 export const breakpoints = {
   xsm: "@media (max-width: 400px)",
