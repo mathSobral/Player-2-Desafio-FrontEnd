@@ -37,7 +37,7 @@ export const Container = styled.div<ContainerProps>`
       transform-origin: center;
       transform: scale(1.2);
     }
-    & .MuiListItem-root:last-child {
+    & .sign-out {
       position: absolute;
       bottom: 60px;
       width: 100%;

@@ -6,3 +6,5 @@ export { default as Logout } from "./Logout";
 export { default as People } from "./People";
 export { default as Person } from "./Person";
 export { default as Speaker } from "./Speaker";
+export { default as ExpandLess } from "./ExpandLess";
+export { default as ExpandMore } from "./ExpandMore";

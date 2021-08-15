@@ -4,9 +4,6 @@ import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
 import { signOut } from "../../redux/auth/authActions";
 import LogoSvg from "../Icons/Logo";
 import HouseSvg from "../Icons/House";
@@ -15,6 +12,7 @@ import PeopleSvg from "../Icons/People";
 import PersonSvg from "../Icons/Person";
 import LogoutSvg from "../Icons/Logout";
 import CustomTypography from "../CustomTypography";
+import NavbarItem, { NavbarItemProps } from "./NavbarItem";
 import { Container, LogoWrapper, StyledButton } from "./styles";
 
 export type NavbarButton = "home" | "dispatch" | "groups" | "contacts" | "";
@@ -30,7 +28,6 @@ const MiniDrawer: React.FC<MiniDrawerProps> = ({ activeButton }) => {
 
   const handleDrawerOpen = () => {
     setOpen(true);
-    console.log("oi mundo");
   };
 
   const handleDrawerClose = () => {
@@ -40,6 +37,65 @@ const MiniDrawer: React.FC<MiniDrawerProps> = ({ activeButton }) => {
   const handleLogoutClick = () => {
     dispatch(signOut());
   };
+
+  const openDrawerIfItsClosed = () => {
+    if (!open) handleDrawerOpen();
+  };
+
+  const listItems: NavbarItemProps[] = [
+    {
+      name: "home",
+      label: "Início",
+      onClick: () => setButton("home"),
+      icon: <HouseSvg />,
+      parentOpen: open,
+      className: button === "home" || !button ? "active" : "",
+    },
+    {
+      name: "dispatchSublist",
+      label: "Disparos",
+      onClick: openDrawerIfItsClosed,
+      icon: <SpeakerSvg />,
+      parentOpen: open,
+      items: [
+        {
+          name: "dispatch",
+          onClick: undefined,
+          label: "Disparos",
+          parentOpen: open,
+        },
+        {
+          name: "createDispatch",
+          onClick: undefined,
+          label: "Criar Disparos",
+          parentOpen: open,
+        },
+      ],
+    },
+    {
+      name: "groups",
+      label: "Grupos",
+      onClick: () => setButton("groups"),
+      icon: <PeopleSvg />,
+      parentOpen: open,
+      className: button === "groups" ? "active" : "",
+    },
+    {
+      name: "contacts",
+      label: "Contatos",
+      onClick: () => setButton("contacts"),
+      icon: <PersonSvg />,
+      parentOpen: open,
+      className: button === "contacts" ? "active" : "",
+    },
+    {
+      name: "signOut",
+      label: "Sair",
+      onClick: handleLogoutClick,
+      icon: <LogoutSvg />,
+      className: "sign-out",
+    },
+  ];
 
   return (
     <ClickAwayListener onClickAway={handleDrawerClose} mouseEvent="onMouseUp">
@@ -60,52 +116,9 @@ const MiniDrawer: React.FC<MiniDrawerProps> = ({ activeButton }) => {
 
           <Divider />
           <List>
-            <ListItem
-              button
-              className={button === "home" || !button ? "active" : ""}
-              onClick={() => setButton("home")}
-            >
-              <ListItemIcon>
-                <HouseSvg />
-              </ListItemIcon>
-              <ListItemText primary="Início" />
-            </ListItem>
-            <ListItem
-              button
-              className={button === "dispatch" ? "active" : ""}
-              onClick={() => setButton("dispatch")}
-            >
-              <ListItemIcon>
-                <SpeakerSvg />
-              </ListItemIcon>
-              <ListItemText primary="Disparos" />
-            </ListItem>
-            <ListItem
-              button
-              className={button === "groups" ? "active" : ""}
-              onClick={() => setButton("groups")}
-            >
-              <ListItemIcon>
-                <PeopleSvg />
-              </ListItemIcon>
-              <ListItemText primary="Grupos" />
-            </ListItem>
-            <ListItem
-              button
-              className={button === "contacts" ? "active" : ""}
-              onClick={() => setButton("contacts")}
-            >
-              <ListItemIcon>
-                <PersonSvg />
-              </ListItemIcon>
-              <ListItemText primary="Contatos" />
-            </ListItem>
-            <ListItem button onClick={handleLogoutClick}>
-              <ListItemIcon>
-                <LogoutSvg />
-              </ListItemIcon>
-              <ListItemText primary="Sair" />
-            </ListItem>
+            {listItems.map((item) => (
+              <NavbarItem key={item.name} {...item} />
+            ))}
           </List>
         </Drawer>
       </Container>
