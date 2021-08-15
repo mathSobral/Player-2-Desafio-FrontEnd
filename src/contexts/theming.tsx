@@ -21,7 +21,7 @@ export function CustomThemeProvider({ children }: ThemeProviderProps) {
    * Load last selected theme or the prefered color scheme.
    */
   useEffect(() => {
-    const savedTheme = localStorage.getItem("@rhisa/lastTheme");
+    const savedTheme = localStorage.getItem("@player2/lastTheme");
 
     if (savedTheme) {
       setSelectedTheme(savedTheme === "light" ? light : dark);
@@ -36,10 +36,10 @@ export function CustomThemeProvider({ children }: ThemeProviderProps) {
   function switchTheme(themingMode: string) {
     if (themingMode === "light" || themingMode === "dark") {
       setSelectedTheme(themingMode === "light" ? light : dark);
-      localStorage.setItem("@rhisa/lastTheme", themingMode);
+      localStorage.setItem("@player2/lastTheme", themingMode);
     } else {
       setSelectedTheme(prefersDarkMode ? dark : light);
-      localStorage.removeItem("@rhisa/lastTheme");
+      localStorage.removeItem("@player2/lastTheme");
     }
   }
 

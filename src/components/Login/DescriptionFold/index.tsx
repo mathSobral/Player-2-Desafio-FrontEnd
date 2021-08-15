@@ -4,7 +4,7 @@ import loginImage from "../../../assets/images/loginImage.png";
 import CustomTypography from "../../CustomTypography";
 import { Container, Content, Image } from "./styles";
 
-const LateralFold: React.FC = () => {
+const DescriptionFold: React.FC = () => {
   const { colors } = useContext(ThemeContext);
   return (
     <Container>
@@ -27,4 +27,4 @@ const LateralFold: React.FC = () => {
   );
 };
 
-export default LateralFold;
+export default DescriptionFold;

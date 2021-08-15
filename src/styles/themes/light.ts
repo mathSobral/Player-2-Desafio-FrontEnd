@@ -18,5 +18,6 @@ export const light: IDefaultTheme = {
     textQuaternary: "#6E778D",
     copyrightText: "#C6CAD6",
     border: "#CED4DE",
+    alert: "#FF403D",
   },
 };

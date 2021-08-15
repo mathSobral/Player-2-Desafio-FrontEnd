@@ -5,6 +5,9 @@ export const Container = styled.div`
   width: 100%;
   display: flex;
   justify-content: flex-end;
+  ${breakpoints.lg} {
+    justify-content: center;
+  }
 `;
 
 export const Content = styled.div`

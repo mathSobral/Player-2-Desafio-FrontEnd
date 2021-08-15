@@ -16,5 +16,6 @@ export interface IDefaultTheme {
     textQuaternary: string;
     copyrightText: string;
     border: string;
+    alert: string;
   };
 }

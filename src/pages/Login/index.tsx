@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import Form from "../../components/Login/Form";
+import FormFold from "../../components/Login/FormFold";
 import Logo from "../../components/Login/Logo";
-import LateralFold from "../../components/Login/LateralFold";
+import DescriptionFold from "../../components/Login/DescriptionFold";
 import CustomTypography from "../../components/CustomTypography";
 import { ThemeContext } from "styled-components";
 import {
@@ -24,7 +24,9 @@ const Login: React.FC = () => {
           <FormSection>
             <FormWrapper>
               <Logo />
-              <Form />
+              <FormFold
+                onSubmit={(values) => console.log(JSON.stringify(values))}
+              />
             </FormWrapper>
             <CopyrightWrapper>
               <CustomTypography color={colors.copyrightText}>
@@ -34,7 +36,7 @@ const Login: React.FC = () => {
             </CopyrightWrapper>
           </FormSection>
           <ImageSection>
-            <LateralFold />
+            <DescriptionFold />
           </ImageSection>
         </Content>
       </Container>
