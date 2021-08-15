@@ -17,5 +17,6 @@ export interface IDefaultTheme {
     copyrightText: string;
     border: string;
     alert: string;
+    divider: string;
   };
 }

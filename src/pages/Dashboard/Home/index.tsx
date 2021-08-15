@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { signOut } from "../../../redux/auth/authActions";
 import Header from "../../../components/Header";
+import Navbar from "../../../components/Navbar";
 
 const Home: React.FC = () => {
   const dispatch = useDispatch();
@@ -13,6 +14,7 @@ const Home: React.FC = () => {
   return (
     <>
       <Header />
+      <Navbar />
       <div
         style={{
           display: "flex",

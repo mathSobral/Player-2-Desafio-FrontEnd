@@ -19,5 +19,6 @@ export const light: IDefaultTheme = {
     copyrightText: "#C6CAD6",
     border: "#CED4DE",
     alert: "#FF403D",
+    divider: "rgba(255, 255, 255, 0.35)",
   },
 };
