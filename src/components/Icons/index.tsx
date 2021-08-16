@@ -10,3 +10,5 @@ export { default as ExpandLess } from "./ExpandLess";
 export { default as ExpandMore } from "./ExpandMore";
 export { default as Bell } from "./Bell";
 export { default as ArrowDown } from "./ArrowDown";
+export { default as ArrowRight } from "./ArrowRight";
+export { default as More } from "./More";

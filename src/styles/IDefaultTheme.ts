@@ -19,5 +19,8 @@ export interface IDefaultTheme {
     border: string;
     alert: string;
     divider: string;
+    cardIconBackground: string;
+    boxShadowPrimary: string;
+    cardTitleText: string;
   };
 }

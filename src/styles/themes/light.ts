@@ -21,5 +21,8 @@ export const light: IDefaultTheme = {
     alert: "#FF403D",
     divider: "rgba(255, 255, 255, 0.35)",
     pageTitleText: "#B3B9C9",
+    cardIconBackground: "#E4F5EB",
+    boxShadowPrimary: "rgba(71, 79, 99, 0.05)",
+    cardTitleText: "#117DF9",
   },
 };

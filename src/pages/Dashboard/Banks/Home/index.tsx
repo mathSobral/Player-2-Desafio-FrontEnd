@@ -7,8 +7,9 @@ import Header from "../../../../components/Dashboard/Header";
 import Navbar from "../../../../components/Navbar";
 import ContentContainer from "../../../../components/Dashboard/ContentContainer";
 import { RootState } from "../../../../redux/rootReducer";
-import { ButtonWrapper } from "./styles";
 import { fetchBanks } from "../../../../redux/banks/banksActions";
+import BankCard from "../../../../components/Dashboard/Banks/BankCard";
+import { ButtonWrapper, BanksWrapper } from "./styles";
 
 const Home: React.FC = () => {
   const { colors } = useContext(ThemeContext);
@@ -35,18 +36,11 @@ const Home: React.FC = () => {
       </Header>
       <Navbar />
       <ContentContainer>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            flexDirection: "column",
-            paddingTop: 50,
-          }}
-        >
+        <BanksWrapper>
           {banks?.map((bank) => (
-            <div>{bank.fullName}</div>
+            <BankCard key={bank.fullName} {...bank} />
           ))}
-        </div>
+        </BanksWrapper>
       </ContentContainer>
     </>
   );

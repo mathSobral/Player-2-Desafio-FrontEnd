@@ -16,3 +16,10 @@ export const ButtonWrapper = styled.div`
     text-transform: none;
   }
 `;
+
+export const BanksWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+`;
