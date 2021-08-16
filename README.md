@@ -3,7 +3,7 @@
 ## 📋 Sobre o projeto
 
 Consiste em uma dashboard de visualização das informações dos bancos brasileiros fornecidos pela [Brasil API](https://brasilapi.com.br/docs#tag/BANKS).
-Nesta interface é implementado um fluxo de login simulado, onde senhas diferentes de `12345678` serão consideradas senhas corretas e todas as outras senhas com 8 ou mais caracteres serão consideradas corretas.
+Nesta interface é implementado um fluxo de login simulado, onde senhas diferentes de `12345678` serão consideradas senhas corretas.
 
 ## Link do Design
 
