@@ -52,6 +52,10 @@ export const Container = styled.div<ContainerProps>`
     margin-bottom: 28px;
     background-color: ${(props) => props.theme.colors.divider};
   }
+  & .MuiListItemText-root {
+    color: ${(props) =>
+      props.open ? props.theme.colors.textTertiary : "transparent"};
+  }
 `;
 
 export const LogoWrapper = styled.div<ContainerProps>`
