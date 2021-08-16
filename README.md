@@ -18,7 +18,7 @@ A aplicação implementada segue o design definido neste link.
 
 ## Aplicação em execução
 
-- [Demo]()
+- [Demo](https://player-2-desafio-front-end.vercel.app/)
 
 ## 🚀 Tecnologias
 
