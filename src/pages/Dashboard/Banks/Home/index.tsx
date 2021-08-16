@@ -14,7 +14,7 @@ import SearchSection from "../../../../components/Dashboard/SearchSection/Index"
 
 const Home: React.FC = () => {
   const { colors } = useContext(ThemeContext);
-  const { banks } = useSelector((state: RootState) => state.banks);
+  const { banks, filters } = useSelector((state: RootState) => state.banks);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -39,9 +39,18 @@ const Home: React.FC = () => {
       <ContentContainer>
         <SearchSection />
         <BanksWrapper>
-          {banks?.map((bank) => (
-            <BankCard key={bank.fullName} {...bank} />
-          ))}
+          {banks
+            ?.filter((bank) => {
+              if (!filters || !filters.fullName) {
+                return true;
+              }
+              return bank.fullName
+                .toLocaleLowerCase()
+                .includes(filters.fullName.toLocaleLowerCase());
+            })
+            .map((bank) => (
+              <BankCard key={bank.fullName} {...bank} />
+            ))}
         </BanksWrapper>
       </ContentContainer>
     </>
