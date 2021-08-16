@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { drawerWidth } from "../../constants/sizes";
+import { breakpoints, drawerWidth } from "../../constants/sizes";
 
 export interface ContainerProps {
   open?: boolean;
@@ -19,6 +19,11 @@ export const Container = styled.div<ContainerProps>`
   flex-direction: column;
   justify-content: space-between;
   z-index: 10;
+
+  ${breakpoints.sm} {
+    height: ${(props) => (props.open ? "100%" : "44px")};
+  }
+
   & .MuiDrawer-root,
   .MuiDrawer-paper {
     width: ${(props) => drawerWidth}px;
@@ -70,6 +75,10 @@ export const LogoWrapper = styled.div<ContainerProps>`
   & svg {
     transform: ${(props) => (props.open ? "scale(1.3)" : "scale(1)")};
     width: ${(props) => (props.open ? 32 : 23)}px;
+  }
+  ${breakpoints.sm} {
+    padding-top: 0px;
+    align-items: center;
   }
 `;
 

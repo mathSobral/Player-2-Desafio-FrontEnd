@@ -1,5 +1,5 @@
 import styled from "styled-components";
-// import { drawerWidth, defaultContainer } from "../../../constants/sizes";
+import { breakpoints } from "../../../constants/sizes";
 
 export const Container = styled.div`
   width: 100%;
@@ -7,6 +7,10 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  ${breakpoints.sm} {
+    flex-direction: column;
+    height: auto;
+  }
 `;
 
 export const TitleWrapper = styled.div`
@@ -15,6 +19,12 @@ export const TitleWrapper = styled.div`
   & div:last-child {
     margin-left: 12px;
     margin-top: 5px;
+  }
+  ${breakpoints.sm} {
+    width: 100%;
+    justify-content: flex-start;
+    padding-top: 24px;
+    padding-bottom: 12px;
   }
 `;
 
@@ -25,5 +35,9 @@ export const SearchFieldWrapper = styled.div`
   }
   & .MuiIconButton-root {
     padding: 0;
+  }
+  ${breakpoints.sm} {
+    width: 100%;
+    padding-bottom: 12px;
   }
 `;

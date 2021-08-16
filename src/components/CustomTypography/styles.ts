@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { breakpoints } from "../../constants/sizes";
 
 export const H2 = styled.div`
   font-size: 30px;
@@ -6,6 +7,9 @@ export const H2 = styled.div`
   text-align: center;
   font-weight: 600;
   margin-bottom: 10px;
+  ${breakpoints.sm} {
+    font-size: 24px;
+  }
 `;
 
 export const H3 = styled.div`

@@ -3,6 +3,7 @@ import {
   drawerWidth,
   defaultContainer,
   header,
+  breakpoints,
 } from "../../../constants/sizes";
 
 export const Container = styled.div`
@@ -15,6 +16,9 @@ export const Container = styled.div`
   padding-left: ${defaultContainer.paddingHorizontal +
   drawerWidth.contracted}px;
   padding-right: ${defaultContainer.paddingHorizontal}px;
+  ${breakpoints.sm} {
+    height: 44px;
+  }
 `;
 
 export const Divider = styled.div`
@@ -44,6 +48,9 @@ export const AlertWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   padding-left: 30px;
+  ${breakpoints.md} {
+    display: none;
+  }
 `;
 
 export const NameDropdownWrapper = styled.button`

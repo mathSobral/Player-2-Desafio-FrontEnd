@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { breakpoints } from "../../../../constants/sizes";
 // import { header } from "../../../constants/sizes";
 
 export const ButtonWrapper = styled.div`
@@ -14,6 +15,9 @@ export const ButtonWrapper = styled.div`
   }
   & .MuiButton-label {
     text-transform: none;
+  }
+  ${breakpoints.sm} {
+    display: none;
   }
 `;
 

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
@@ -14,6 +15,7 @@ import LogoutSvg from "../Icons/Logout";
 import CustomTypography from "../CustomTypography";
 import NavbarItem, { NavbarItemProps } from "./NavbarItem";
 import { Container, LogoWrapper, StyledButton } from "./styles";
+import { breakpoints } from "../../constants/sizes";
 
 export type NavbarButton = "home" | "dispatch" | "groups" | "contacts" | "";
 
@@ -25,6 +27,7 @@ const MiniDrawer: React.FC<MiniDrawerProps> = ({ activeButton }) => {
   const [open, setOpen] = useState(false);
   const [button, setButton] = useState<NavbarButton>(activeButton || "");
   const dispatch = useDispatch();
+  const isSm = useMediaQuery(breakpoints.sm);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -100,7 +103,18 @@ const MiniDrawer: React.FC<MiniDrawerProps> = ({ activeButton }) => {
   return (
     <ClickAwayListener onClickAway={handleDrawerClose} mouseEvent="onMouseUp">
       <Container open={open}>
-        <Drawer variant="permanent" anchor="left" open={open}>
+        {isSm && !open && (
+          <LogoWrapper open={open}>
+            <StyledButton onClick={handleDrawerOpen}>
+              <LogoSvg />
+            </StyledButton>
+          </LogoWrapper>
+        )}
+        <Drawer
+          variant={isSm ? "persistent" : "permanent"}
+          anchor="left"
+          open={open}
+        >
           <LogoWrapper open={open}>
             {!open ? (
               <StyledButton onClick={handleDrawerOpen}>

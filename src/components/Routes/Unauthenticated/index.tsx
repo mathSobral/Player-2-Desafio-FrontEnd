@@ -15,9 +15,7 @@ const RoutesUnauthenticated: React.FC<RoutesUnauthenticatedProps & RouteProps> =
           !isAuthenticated ? (
             <Component {...props} />
           ) : (
-            <Redirect
-              to={{ pathname: "/dashboard", state: { from: props.location } }}
-            />
+            <Redirect to={{ pathname: "/", state: { from: props.location } }} />
           )
         }
       />

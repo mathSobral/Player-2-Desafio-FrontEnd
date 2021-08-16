@@ -1,5 +1,9 @@
 import styled from "styled-components";
-import { drawerWidth, defaultContainer } from "../../../constants/sizes";
+import {
+  drawerWidth,
+  defaultContainer,
+  breakpoints,
+} from "../../../constants/sizes";
 
 export const Container = styled.div`
   height: 100%;
@@ -7,4 +11,7 @@ export const Container = styled.div`
   padding-left: ${defaultContainer.paddingHorizontal +
   drawerWidth.contracted}px;
   padding-right: ${defaultContainer.paddingHorizontal}px;
+  ${breakpoints.sm} {
+    padding-left: ${defaultContainer.paddingHorizontal}px;
+  }
 `;
