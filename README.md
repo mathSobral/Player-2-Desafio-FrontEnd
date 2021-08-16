@@ -12,9 +12,9 @@ A aplicação implementada segue o design definido neste link.
 
 ## Páginas Implementadas
 
-[x] Login
-[x] Listagem de todos os bancos
-[ ] Exibição de um banco
+- [x] Login
+- [x] Listagem de todos os bancos
+- [ ] Exibição de um banco
 
 ## Aplicação em execução
 
@@ -40,7 +40,7 @@ A aplicação implementada segue o design definido neste link.
 
 ```bash
 # Clone este repositório
-$ git clone https://github.com/mathSobral/Front-End-Challenge-2021-Coodesh.git
+$ git clone https://github.com/mathSobral/Player-2-Desafio-FrontEnd.git
 
 # Instale as dependências
 $ yarn install
