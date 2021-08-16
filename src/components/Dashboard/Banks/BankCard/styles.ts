@@ -1,15 +1,28 @@
 import styled from "styled-components";
 // import { drawerWidth, defaultContainer } from "../../../constants/sizes";
 
-export const Container = styled.div`
+export interface ContainerProps {
+  active?: boolean;
+}
+
+export const Container = styled.div<ContainerProps>`
   width: 300px;
   height: 115px;
-  background-color: ${(props) => props.theme.colors.background0};
+  background-color: ${(props) =>
+    props.active
+      ? props.theme.colors.background3
+      : props.theme.colors.background0};
   padding: 20px;
   flex-grow: 1;
   min-width: 20vmax;
   border-radius: 8px;
   box-shadow: ${(props) => props.theme.colors.boxShadowPrimary};
+  &:hover {
+    background-color: ${(props) =>
+      props.active
+        ? props.theme.colors.background3
+        : props.theme.colors.background2};
+  }
 `;
 
 export const HeaderWrapper = styled.div`
@@ -58,6 +71,42 @@ export const MoreButtonWrapper = styled.div`
     align-items: center;
     justify-content: center;
     padding: 0;
+  }
+`;
+
+export interface TooltipProps {
+  applyRight: boolean;
+  right?: number;
+}
+
+export const CustomTooltipWrapper = styled.div<TooltipProps>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 172px;
+  height: 52px;
+  background-color: ${(props) => props.theme.colors.background0};
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: ${(props) => props.theme.colors.boxShadowPrimary};
+  cursor: pointer;
+  &:hover {
+    background-color: ${(props) => props.theme.colors.background2};
+    & path {
+      fill: ${(props) => props.theme.colors.background2};
+    }
+  }
+  & .close-icon {
+    transform-origin: center;
+    transform: scale(1.6);
+    margin-right: 10px;
+  }
+  & .arrow {
+    position: absolute;
+    bottom: 0;
+    ${(props) => (props.applyRight ? "" : "transform: translateX(-50%);")}
+    ${(props) => (props.applyRight ? "" : "left: 50%;")}
+    ${(props) => (props.applyRight ? `right: ${props.right}px;` : "")}
   }
 `;
 

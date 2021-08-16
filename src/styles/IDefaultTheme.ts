@@ -9,6 +9,8 @@ export interface IDefaultTheme {
     buttonTertiary: string;
     background0: string;
     background1: string;
+    background2: string;
+    background3: string;
     backgroundGradient: string;
     textPrimary: string;
     textSecondary: string;

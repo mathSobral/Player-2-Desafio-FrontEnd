@@ -18,6 +18,7 @@ export const Container = styled.div<ContainerProps>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  z-index: 10;
   & .MuiDrawer-root,
   .MuiDrawer-paper {
     width: ${(props) => drawerWidth}px;

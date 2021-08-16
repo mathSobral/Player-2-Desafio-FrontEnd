@@ -11,6 +11,8 @@ export const light: IDefaultTheme = {
     buttonTertiary: "#069293",
     background0: "#FFFFFF",
     background1: "#F7F7F8",
+    background2: "#EDEFF2",
+    background3: "#E4E7EC",
     backgroundGradient: "linear-gradient(0deg, #0ea4c2 0%, #13cfb9 100%)",
     textPrimary: "#3B3F49",
     textSecondary: "#474F63",
@@ -22,7 +24,7 @@ export const light: IDefaultTheme = {
     divider: "rgba(255, 255, 255, 0.35)",
     pageTitleText: "#B3B9C9",
     cardIconBackground: "#E4F5EB",
-    boxShadowPrimary: "rgba(71, 79, 99, 0.05)",
+    boxShadowPrimary: "0px 4px 20px 0px #474F630D",
     cardTitleText: "#117DF9",
   },
 };

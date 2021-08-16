@@ -1,8 +1,17 @@
-import React, { useContext } from "react";
-import { Button } from "@material-ui/core";
+import React, { useContext, useState } from "react";
+import Button from "@material-ui/core/Button";
+import ClickAwayListener from "@material-ui/core/ClickAwayListener";
+import Popper from "@material-ui/core/Popper";
 import { Bank } from "../../../../redux/banks/banksTypes";
 import CustomTypography from "../../../CustomTypography";
-import { ArrowRight, More, People, Speaker } from "../../../Icons";
+import {
+  ArrowDownFill,
+  ArrowRight,
+  Close,
+  More,
+  People,
+  Speaker,
+} from "../../../Icons";
 import {
   Container,
   HeaderWrapper,
@@ -12,6 +21,8 @@ import {
   HeaderActionsWrapper,
   PeopleCounterWrapper,
   MoreButtonWrapper,
+  CustomTooltipWrapper,
+  TooltipProps,
 } from "./styles";
 import { ThemeContext } from "styled-components";
 
@@ -19,8 +30,27 @@ export interface BankCardProps extends Bank {}
 
 const BankCard: React.FC<BankCardProps> = ({ code, fullName, ispb }) => {
   const { colors } = useContext(ThemeContext);
+  const [anchorEl, setAnchorEl] = useState<(EventTarget & HTMLElement) | null>(
+    null
+  );
+  const [tootlipProps, setTooptipProps] = useState<TooltipProps>({
+    applyRight: false,
+  });
+
+  const handleMoreClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+    const { x } = event.currentTarget.getBoundingClientRect();
+    const distance = window.innerWidth - x;
+    if (distance <= 73) setTooptipProps({ applyRight: true, right: 33 });
+    else setTooptipProps({ applyRight: false });
+  };
+
+  const handleClickAway = () => {
+    setAnchorEl(null);
+  };
+
   return (
-    <Container>
+    <Container active={Boolean(anchorEl)}>
       <HeaderWrapper>
         <Button>
           <CustomTypography
@@ -39,11 +69,33 @@ const BankCard: React.FC<BankCardProps> = ({ code, fullName, ispb }) => {
               23
             </CustomTypography>
           </PeopleCounterWrapper>
-          <MoreButtonWrapper>
-            <Button>
-              <More />
-            </Button>
-          </MoreButtonWrapper>
+          <ClickAwayListener
+            onClickAway={handleClickAway}
+            mouseEvent="onMouseUp"
+          >
+            <MoreButtonWrapper>
+              <Button onClick={handleMoreClick}>
+                <More />
+              </Button>
+              <Popper
+                id="popper"
+                placement="top"
+                open={Boolean(anchorEl)}
+                anchorEl={anchorEl}
+              >
+                <CustomTooltipWrapper {...tootlipProps}>
+                  <Close className="close-icon" />
+                  <CustomTypography
+                    variant="body"
+                    color={colors.textQuaternary}
+                  >
+                    Deletar Banco
+                  </CustomTypography>
+                  <ArrowDownFill className="arrow" />
+                </CustomTooltipWrapper>
+              </Popper>
+            </MoreButtonWrapper>
+          </ClickAwayListener>
         </HeaderActionsWrapper>
       </HeaderWrapper>
       <ContentWrapper>
