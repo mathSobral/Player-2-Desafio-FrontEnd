@@ -1,8 +1,14 @@
 import { CSSProperties } from "@material-ui/core/styles/withStyles";
 import React, { HTMLAttributes } from "react";
-import { H2, H4, Body, FunctionalLabel, ButtonText } from "./styles";
+import { H2, H3, H4, Body, FunctionalLabel, ButtonText } from "./styles";
 
-export type RuleNames = "h2" | "h4" | "body" | "functionalLabel" | "buttonText";
+export type RuleNames =
+  | "h2"
+  | "h3"
+  | "h4"
+  | "body"
+  | "functionalLabel"
+  | "buttonText";
 
 export interface ICustomButtonProps {
   variant?: RuleNames;
@@ -22,6 +28,8 @@ const CustomTypography: React.FC<
   switch (variant) {
     case "h2":
       return <H2 style={style}>{children}</H2>;
+    case "h3":
+      return <H3 style={style}>{children}</H3>;
     case "h4":
       return <H4 style={style}>{children}</H4>;
     case "body":

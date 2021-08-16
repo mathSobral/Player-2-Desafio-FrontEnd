@@ -13,3 +13,4 @@ export { default as ArrowDown } from "./ArrowDown";
 export { default as ArrowRight } from "./ArrowRight";
 export { default as More } from "./More";
 export { default as ArrowDownFill } from "./ArrowDownFill";
+export { default as Search } from "./Search";

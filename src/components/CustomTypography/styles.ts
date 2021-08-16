@@ -8,6 +8,12 @@ export const H2 = styled.div`
   margin-bottom: 10px;
 `;
 
+export const H3 = styled.div`
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
+`;
+
 export const H4 = styled.div`
   font-size: 14px;
   line-height: 18px;

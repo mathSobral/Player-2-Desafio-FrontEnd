@@ -10,6 +10,7 @@ import { RootState } from "../../../../redux/rootReducer";
 import { fetchBanks } from "../../../../redux/banks/banksActions";
 import BankCard from "../../../../components/Dashboard/Banks/BankCard";
 import { ButtonWrapper, BanksWrapper } from "./styles";
+import SearchSection from "../../../../components/Dashboard/SearchSection/Index";
 
 const Home: React.FC = () => {
   const { colors } = useContext(ThemeContext);
@@ -36,6 +37,7 @@ const Home: React.FC = () => {
       </Header>
       <Navbar />
       <ContentContainer>
+        <SearchSection />
         <BanksWrapper>
           {banks?.map((bank) => (
             <BankCard key={bank.fullName} {...bank} />
