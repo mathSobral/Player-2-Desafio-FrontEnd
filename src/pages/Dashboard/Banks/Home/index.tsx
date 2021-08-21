@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Button } from "@material-ui/core";
 import { ThemeContext } from "styled-components";
@@ -21,6 +21,19 @@ const Home: React.FC = () => {
     dispatch(fetchBanks());
   }, [dispatch]);
 
+  const filteredBanks = useMemo(() => {
+    return banks
+      ?.filter((bank) => {
+        if (!filters || !filters.fullName) {
+          return true;
+        }
+        return bank.fullName
+          .toLocaleLowerCase()
+          .includes(filters.fullName.toLocaleLowerCase());
+      })
+      .map((bank) => <BankCard key={bank.fullName} {...bank} />);
+  }, [banks, filters]);
+
   return (
     <>
       <Header>
@@ -38,20 +51,7 @@ const Home: React.FC = () => {
       <Navbar />
       <ContentContainer>
         <SearchSection />
-        <BanksWrapper>
-          {banks
-            ?.filter((bank) => {
-              if (!filters || !filters.fullName) {
-                return true;
-              }
-              return bank.fullName
-                .toLocaleLowerCase()
-                .includes(filters.fullName.toLocaleLowerCase());
-            })
-            .map((bank) => (
-              <BankCard key={bank.fullName} {...bank} />
-            ))}
-        </BanksWrapper>
+        <BanksWrapper>{filteredBanks}</BanksWrapper>
       </ContentContainer>
     </>
   );
