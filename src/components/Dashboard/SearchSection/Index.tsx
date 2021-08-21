@@ -1,4 +1,4 @@
-import React, { useContext, useMemo, useEffect } from "react";
+import React, { useContext, useMemo, useEffect, useCallback } from "react";
 import debounce from "lodash.debounce";
 import { useSelector, useDispatch } from "react-redux";
 import { ThemeContext } from "styled-components";
@@ -27,13 +27,16 @@ const SearchSection: React.FC = () => {
     };
   }, [dispatch]);
 
-  const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(setBanksFilter({ fullName: event.target.value }));
-  };
+  const changeHandler = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      dispatch(setBanksFilter({ fullName: event.target.value }));
+    },
+    [dispatch]
+  );
 
   const debouncedChangeHandler = useMemo(
     () => debounce(changeHandler, 300),
-    []
+    [changeHandler]
   );
 
   return (
