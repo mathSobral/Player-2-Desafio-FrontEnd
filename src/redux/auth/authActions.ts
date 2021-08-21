@@ -43,7 +43,7 @@ export const signIn =
       };
       if (password !== "12345678") dispatch(signInSuccess(user));
       else dispatch(signInFail("Senha ou usuário informados incorretamente"));
-    }, 3000);
+    }, 1000);
   };
 
 export const signOut = (): Action => {

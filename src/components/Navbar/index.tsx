@@ -105,7 +105,7 @@ const MiniDrawer: React.FC<MiniDrawerProps> = ({ activeButton }) => {
       <Container open={open}>
         {isSm && !open && (
           <LogoWrapper open={open}>
-            <StyledButton onClick={handleDrawerOpen}>
+            <StyledButton onClick={handleDrawerOpen} data-cy="navbarLogo">
               <LogoSvg />
             </StyledButton>
           </LogoWrapper>
@@ -117,11 +117,11 @@ const MiniDrawer: React.FC<MiniDrawerProps> = ({ activeButton }) => {
         >
           <LogoWrapper open={open}>
             {!open ? (
-              <StyledButton onClick={handleDrawerOpen}>
+              <StyledButton onClick={handleDrawerOpen} data-cy="navbarLogo">
                 <LogoSvg />
               </StyledButton>
             ) : (
-              <StyledButton onClick={handleDrawerClose}>
+              <StyledButton onClick={handleDrawerClose} data-cy="navbarLogo">
                 <LogoSvg />
                 <CustomTypography>informem-se</CustomTypography>
               </StyledButton>

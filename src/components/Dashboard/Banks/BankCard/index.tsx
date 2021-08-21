@@ -55,7 +55,7 @@ const BankCard: React.FC<BankCardProps> = ({ code, fullName, ispb }) => {
   };
 
   return (
-    <Container active={active}>
+    <Container active={active} className="bank-card">
       <HeaderWrapper>
         <Button>
           <CustomTypography

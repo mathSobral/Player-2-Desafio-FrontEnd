@@ -60,6 +60,7 @@ const SearchSection: React.FC = () => {
           className="search-text-field"
           placeholder="Digite o nome do banco"
           onChange={debouncedChangeHandler}
+          data-cy="bankFilterInput"
           customInputProps={{
             endAdornment: (
               <IconButton>

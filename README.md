@@ -45,3 +45,9 @@ $ yarn install
 $ yarn start
 
 ```
+
+### Executando os testes e2e
+
+```bash
+$ yarn test:coverage
+```

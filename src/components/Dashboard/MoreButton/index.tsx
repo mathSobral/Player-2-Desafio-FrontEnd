@@ -35,7 +35,7 @@ const MoreButton: React.FC<MoreButtonProps> = ({
 
   return (
     <ClickAwayListener onClickAway={handleClickAway} mouseEvent="onMouseUp">
-      <MoreButtonWrapper>
+      <MoreButtonWrapper className="moreButton">
         <Button onClick={handleMoreClick}>
           <More />
         </Button>
