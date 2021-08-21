@@ -11,6 +11,7 @@ import {
   Bank,
   Filters,
   BanksState,
+  DELETE_BANK,
 } from "./banksTypes";
 
 const initialState: BanksState = {
@@ -74,6 +75,11 @@ export const banksReducer = (
         ...state,
         filters: undefined,
       };
+    case DELETE_BANK:
+      return {
+        ...state,
+        banks: state.banks?.filter((bank) => bank.ispb !== action.payload)
+      }
     default:
       return state;
   }

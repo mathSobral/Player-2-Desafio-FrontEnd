@@ -9,6 +9,7 @@ import {
   FETCH_BANK_FAIL,
   SET_BANKS_FILTERS,
   CLEAR_BANKS_FILTERS,
+  DELETE_BANK,
   Action,
   Bank,
   Filters,
@@ -78,3 +79,7 @@ export const fetchBank =
         dispatch(fetchBankFail(message));
       });
   };
+
+export const deleteBank = (bankIspb: string): Action => {
+  return { type: DELETE_BANK, payload: bankIspb };
+}

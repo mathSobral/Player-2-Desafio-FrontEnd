@@ -6,6 +6,7 @@ export const FETCH_BANK_SUCCESS = "FETCH_BANK_SUCCESS";
 export const FETCH_BANK_FAIL = "FETCH_BANK_FAIL ";
 export const SET_BANKS_FILTERS = "SET_BANKS_FILTERS ";
 export const CLEAR_BANKS_FILTERS = "CLEAR_BANKS_FILTERS ";
+export const DELETE_BANK = "DELETE_BANK"
 
 export interface Bank {
   ispb: string;
