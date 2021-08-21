@@ -1,4 +1,4 @@
-# Desafio Front-end Player 2
+# Prova de conceito de testes e2e com Cypress
 
 ## 📋 Sobre o projeto
 
@@ -15,10 +15,6 @@ A aplicação implementada segue o design definido neste link.
 - [x] Login
 - [x] Listagem de todos os bancos
 - [ ] Exibição de um banco
-
-## Aplicação em execução
-
-- [Demo](https://player-2-desafio-front-end.vercel.app/)
 
 ## 🚀 Tecnologias
 
